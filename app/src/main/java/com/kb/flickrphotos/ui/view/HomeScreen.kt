@@ -12,7 +12,9 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.kb.flickrphotos.R
@@ -46,50 +48,15 @@ fun HomeScreen(
         OutlinedTextField(
             value = searchedTag,
             label = {
-                Text(text = context.getString(R.string.hint_search),)
+                Text(text = context.getString(R.string.hint_search))
             }, onValueChange = {
                 searchedTag = it
             },
+            textStyle = TextStyle(color = Color.Blue),
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
-        Spacer(modifier = Modifier.height(5.dp))
 
-        //Search Button
-        Button(
-            onClick = {
-                if (ConnectivityUtils.isNetworkAvailable(context)) {
-                    viewModel.controller.searchButtonOnClick(
-                        searchedTag,
-                        viewModel
-                    )
-                } else {
-                    Toast.makeText(
-                        context,
-                        context.getString(R.string.message_no_internet),
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                }
-            },
-            contentPadding = PaddingValues(
-                start = 20.dp,
-                top = 12.dp,
-                end = 20.dp,
-                bottom = 12.dp
-            ),
-            modifier = Modifier
-                .padding(top = 5.dp)
-                .fillMaxWidth()
-        ) {
-            Icon(
-                Icons.Filled.Search,
-                contentDescription = context.getString(R.string.tx_search),
-                modifier = Modifier.size(ButtonDefaults.IconSize)
-            )
-            Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-            Text(text = context.getString(R.string.tx_search))
-        }
         Spacer(modifier = Modifier.height(10.dp))
 
         //Show progress while dowloading the photos completes

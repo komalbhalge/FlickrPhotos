@@ -28,10 +28,12 @@ fun GridDetailCard(data: Photo, placeholderId: Int) {
     val context = LocalContext.current
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(5.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
+        verticalArrangement = Arrangement.Center,
+
+        ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,7 +68,7 @@ fun GridDetailCard(data: Photo, placeholderId: Int) {
 
         //Image tittle
         Text(
-            text = context.getString(R.string.tx_image_title).plus(data.title),
+            text = data.title ?: "",
             color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
@@ -74,12 +76,21 @@ fun GridDetailCard(data: Photo, placeholderId: Int) {
 
         Spacer(modifier = Modifier.padding(10.dp))
 
-        Text(
-            text = context.getString(R.string.tx_image_title).plus(data.description?.Content),
-            color = Color.Black,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Normal
-        )
+        //Image Description
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = context.getString(R.string.tx_image_desc)
+                    .plus("\n" + data.description?.Content),
+                color = Color.Black,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal
+            )
+        }
     }
 }
 

@@ -4,8 +4,7 @@
 
     <string name="hint_search">Search…</string>
     <string name="tx_search">Search</string>
-    <string name="tx_image_title">Photo Title: </string>
-    <string name="tx_image_desc">Photo Description: </string>
+    <string name="tx_image_desc">Description: </string>
     <string name="message_no_internet">Please check your internet connection and try again!</string>
     <string name="message_download">Do you want to download %1$s?</string>
     <string name="label_download">Download</string>
